@@ -1,0 +1,13 @@
+<body>
+  <nav>
+    {{ if .IsTranslated }}
+      {{ range .Translations }}
+        <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+      {{ end }}
+    {{ end }}
+  </nav>
+  {{ block "main" . }}{{ end }}
+  {{ with .Resources.GetMatch "header*.*" }}
+    <img src="{{ .RelPermalink }}">
+  {{ end }}
+</body>
